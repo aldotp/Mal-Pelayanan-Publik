@@ -1,6 +1,6 @@
 ## How to Use
-- Clone
+- Git clone https://github.com/aldotp/Pengajuan-Ijin.git
 - Composer install / Composer update
-- ubah nama file .env.example ke .env
-- nyalakan xampp, buat database "pengajuan-izin"
+- bah nama file .env.example ke .env
+- Nyalakan xampp, buat database "pengajuan-izin"
 - "php artisan serve" untuk menyalakan
