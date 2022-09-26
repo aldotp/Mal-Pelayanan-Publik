@@ -3,4 +3,5 @@
 - Composer install / Composer update
 - Ubah nama file .env.example ke .env
 - Nyalakan xampp, buat database "pengajuan-izin"
-- "php artisan serve" untuk menyalakan
+- php artisan migrate:fresh / php artisan migrate
+- php artisan serve untuk menyalakan
