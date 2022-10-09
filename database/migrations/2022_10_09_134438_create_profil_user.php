@@ -23,7 +23,7 @@ return new class extends Migration
         });
 
         Schema::table('profil_user', function($table) {
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

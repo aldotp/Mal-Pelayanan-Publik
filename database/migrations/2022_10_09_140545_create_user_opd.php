@@ -20,8 +20,8 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::table('user_opd', function($table) {
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('set null');
-            $table->foreign('id_opd')->references('id')->on('opd')->onDelete('set null');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_opd')->references('id')->on('opd');
         });
     }
 

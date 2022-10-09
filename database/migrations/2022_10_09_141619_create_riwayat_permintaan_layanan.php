@@ -22,7 +22,7 @@ return new class extends Migration
         });
 
         Schema::table('riwayat_permintaan_layanan', function($table) {
-            $table->foreign('id_layanan')->references('id')->on('layanan')->onDelete('set null');
+            $table->foreign('id_layanan')->references('id')->on('layanan');
         });
     }
 

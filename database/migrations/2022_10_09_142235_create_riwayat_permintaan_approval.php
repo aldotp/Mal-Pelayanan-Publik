@@ -20,7 +20,7 @@ return new class extends Migration
         });
 
         Schema::table('riwayat_permintaan_approval', function($table) {
-            $table->foreign('id_user_opd')->references('id')->on('user_opd')->onDelete('set null');
+            $table->foreign('id_user_opd')->references('id')->on('user_opd');
         });
     }
 

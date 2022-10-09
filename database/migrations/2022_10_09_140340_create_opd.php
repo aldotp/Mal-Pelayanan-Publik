@@ -24,7 +24,7 @@ return new class extends Migration
         });
 
         Schema::table('opd', function($table) {
-            $table->foreign('id_wilayah')->references('id')->on('wilayah')->onDelete('set null');
+            $table->foreign('id_wilayah')->references('id')->on('wilayah');
         });
     }
     
