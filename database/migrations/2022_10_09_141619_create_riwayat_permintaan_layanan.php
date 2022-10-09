@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_opd', function (Blueprint $table) {
+        Schema::create('riwayat_permintaan_layanan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_opd');
+            $table->string('perihal');
+            $table->string('deskripsi');
+            $table->unsignedBigInteger('id_layanan');
             $table->timestamps();
         });
-        Schema::table('user_opd', function($table) {
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('set null');
-            $table->foreign('id_opd')->references('id')->on('opd')->onDelete('set null');
+
+        Schema::table('riwayat_permintaan_layanan', function($table) {
+            $table->foreign('id_layanan')->references('id')->on('layanan')->onDelete('set null');
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_opd');
+        Schema::dropIfExists('riwayat_permintaan_layanan');
     }
 };

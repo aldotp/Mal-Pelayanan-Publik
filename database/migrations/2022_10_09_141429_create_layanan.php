@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_opd', function (Blueprint $table) {
+        Schema::create('layanan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
+            $table->string('nama_layanan');
             $table->unsignedBigInteger('id_opd');
             $table->timestamps();
         });
-        Schema::table('user_opd', function($table) {
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('set null');
+
+        Schema::table('layanan', function($table) {
             $table->foreign('id_opd')->references('id')->on('opd')->onDelete('set null');
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_opd');
+        Schema::dropIfExists('layanan');
     }
 };
