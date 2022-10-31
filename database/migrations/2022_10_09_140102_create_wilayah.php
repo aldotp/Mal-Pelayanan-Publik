@@ -18,7 +18,12 @@ return new class extends Migration
             $table->string('kode');
             $table->string('nama');
             $table->string('level');
+            $table->unsignedBigInteger('id_parent');
             $table->timestamps();
+        });
+
+        Schema::table('wilayah', function($table) {
+            $table->foreign('id_parent')->references('id')->on('wilayah');
         });
     }
 
