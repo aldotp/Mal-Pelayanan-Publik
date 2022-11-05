@@ -1,6 +1,6 @@
 @extends('layout.aplikasi')
 
-@section('title', 'Home')
+@section('title', 'User')
 
 @section('konten')
 
