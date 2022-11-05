@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InputController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,7 @@ Route::get('/sesi/logout', [SessionController::class, 'logout'] );
 
 
 Route::get('/admin', [AdminController::class, 'admin'] );
+
+Route::get('/layanan', [InputController::class, 'layanan']);
+Route::get('/opd', [InputController::class, 'opd']);
+Route::get('/wilayah', [InputController::class, 'wilayah']);
