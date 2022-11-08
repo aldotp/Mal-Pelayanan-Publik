@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InputController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\OpdController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\WilayahController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +39,16 @@ Route::get('/sesi/logout', [SessionController::class, 'logout'] );
 
 Route::get('/admin', [AdminController::class, 'admin'] );
 
-Route::get('/layanan', [InputController::class, 'layanan']);
-Route::get('/opd', [InputController::class, 'opd']);
-Route::get('/wilayah', [InputController::class, 'wilayah']);
+// input
+Route::get('/input/layanan', [InputController::class, 'layanan']);
+Route::get('/input/opd', [InputController::class, 'opd']);
+Route::get('/input/wilayah', [InputController::class, 'wilayah']);
+
+// tampilkan data
+// Route::get('/wilayah', [WilayahController::class, 'index']);
+// Route::get('/wilayah/{id}', [WilayahController::class, 'show'])->where('id', '[0-9]+');
+
+
+Route::resource('wilayah', WilayahController::class);
+Route::resource('opd', OpdController::class);
+Route::resource('layanan', LayananController::class);
