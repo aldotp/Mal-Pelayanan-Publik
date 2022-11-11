@@ -5,11 +5,9 @@
 
 @section('konten')
     <div>
-        <a href="/wilayah" class="btn btn-secondary">Kembali</a>
-        <h1> {{ $data->nama}}</h1>
-        <p> <b>Kode</b> {{ $data->kode}}</p>
-        <p> <b>Level</b> {{ $data->level}}</p>
-        <p> <b>Parent_id</b> {{ $data->id_parent}}</p>
+        <a href="/layanan" class="btn btn-secondary">Kembali</a>
+        <h1> {{ $data->nama_layanan	}}</h1>
+        <p> <b>Id Opd</b> {{ $data->id_opd}}</p>
 
     </div>
 @endsection

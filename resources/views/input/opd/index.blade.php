@@ -6,6 +6,7 @@
 @section('konten')
 <h1>Organisasi Perangkat Daerah</h1>
 <a href="/opd/create" class="btn btn-primary">Tambah Data Opd</a>
+<a href="/admin" class="btn btn-secondary">Kembali</a>
     <table class="table">
         <thead>
             <tr>

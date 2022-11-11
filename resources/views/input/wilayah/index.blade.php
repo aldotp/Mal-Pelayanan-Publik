@@ -6,6 +6,7 @@
 @section('konten')
 <h1>Wilayah</h1>
 <a href="/wilayah/create" class="btn btn-primary">Tambah Data Wilayah</a>
+<a href="/admin" class="btn btn-secondary">Kembali</a>
     <table class="table">
         <thead>
             <tr>

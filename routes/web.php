@@ -5,6 +5,7 @@ use App\Http\Controllers\InputController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WilayahController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,18 +38,16 @@ Route::post('/sesi/register', [SessionController::class, 'createAccount'] );
 Route::get('/sesi/logout', [SessionController::class, 'logout'] );
 
 
-Route::get('/admin', [AdminController::class, 'admin'] );
-
-// input
-Route::get('/input/layanan', [InputController::class, 'layanan']);
-Route::get('/input/opd', [InputController::class, 'opd']);
-Route::get('/input/wilayah', [InputController::class, 'wilayah']);
-
-// tampilkan data
-// Route::get('/wilayah', [WilayahController::class, 'index']);
-// Route::get('/wilayah/{id}', [WilayahController::class, 'show'])->where('id', '[0-9]+');
+Route::get('/admin', [AdminController::class, 'admin'] )->middleware('isLogin');
 
 
-Route::resource('wilayah', WilayahController::class);
-Route::resource('opd', OpdController::class);
-Route::resource('layanan', LayananController::class);
+
+// crud
+Route::resource('wilayah', WilayahController::class)->middleware('isLogin');
+Route::resource('opd', OpdController::class)->middleware('isLogin');
+Route::resource('layanan', LayananController::class)->middleware('isLogin');
+
+
+
+// coba-coba (Training)
+Route::resource('siswa', SiswaController::class)->middleware('isLogin');

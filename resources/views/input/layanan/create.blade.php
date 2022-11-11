@@ -4,31 +4,23 @@
 @section('title', 'Tambah Wilayah ')
 
 @section('konten')
-    <form method="post" action="/wilayah">
+    <form method="post" action="/layanan">
         @csrf
         <div class="mb-3">
-            <label for="kode">Kode</label>
-            <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode" value=" {{ Session::get('kode') }}">
+            <label for="nama_layanan">Nama Layanan</label>
+            <input type="text" class="form-control" id="nama_layanan" placeholder="Nama Layanan" name="nama_layanan" value=" {{ Session::get('nama_layanan') }}">
         </div>
         <div class="mb-3">
-            <label for="nama">Nama Wilayah</label>
-            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="{{ Session::get('nama') }}">
-        </div>
-        <div class="mb-3">
-            <label for="level">Level</label>
-            <input type="text" class="form-control" id="level" placeholder="Level" name="level" value=" {{ Session::get('level') }}">
-        </div>
-        <div class="mb-3">
-            <label for="id_parent">Level Parent</label>
-            <select class="form-control" name="id_parent" id="id_parent">
-                @foreach($wilayah as $value)
+            <label for="id_opd">Id Opd</label>
+            <select class="form-control" name="id_opd" id="id_opd">
+                @foreach($opd as $value)
                 <option value="{{$value->id}}">{{$value->nama}}</option>
                 @endforeach
             </select>
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/wilayah" class="btn btn-secondary">Kembali</a>
+            <a href="/layanan" class="btn btn-secondary">Kembali</a>
         </div>
     </form>
 @endsection

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kode');
             $table->string('nama');
             $table->string('level');
-            $table->unsignedBigInteger('id_parent');
+            $table->unsignedBigInteger('id_parent')->nullable();
             $table->timestamps();
         });
 
