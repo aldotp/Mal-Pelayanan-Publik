@@ -1,12 +1,12 @@
-Sistem Informasi Desa (LARAVEL 9)
--Pengajuan Layanan
--Pengajuan Izin
--Input Data
+## Sistem Informasi Desa (LARAVEL 9)
+- Pengajuan Layanan
+- Pengajuan Izin
+- Input Data
 
-Fitur
--Register
--Login
--CRUD
+## Fitur
+- Register
+- Login
+- CRUD
 
 ## Instalation
 - Git clone https://github.com/aldotp/Pengajuan-Ijin.git
