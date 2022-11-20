@@ -7,14 +7,14 @@
     <form method="post" action="/pengajuan">
         @csrf
         <div class="mb-3">
-            <label for="perihal">Perihal Pengajuan</label>
-            <input type="text" class="form-control" id="perihal" placeholder="Perihal Pengajuan" name="perihal" value=" {{ Session::get('perihal') }}">
+            <label for="perihal">Perihal</label>
+            <input type="text" class="form-control" id="perihal" placeholder="Perihal" name="perihal" value=" {{ Session::get('perihal') }}">
         </div>
         <div class="mb-3">
-            <label for="deskripsi">Deskripsi Pengajuan</label>
+            <label for="deskripsi">Deskripsi</label>
             <select class="form-control" name="deskripsi" id="deskripsi">
                 @foreach($opd as $value)
-                <option value="{{$value->id}}">{{$value->nama}}</option>
+                <option value="{{$value->id}}">{{$value->nama_layanan}}</option>
                 @endforeach
             </select>
         </div>
