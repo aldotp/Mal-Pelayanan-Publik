@@ -40,7 +40,7 @@ Route::get('/sesi/logout', [SessionController::class, 'logout'] );
 
 Route::get('/admin', [AdminController::class, 'admin'] )->middleware('isLogin');
 
-
+Route::get('/user', [AdminController::class, 'user'] )->middleware('isLogin');
 
 // crud
 Route::resource('wilayah', WilayahController::class)->middleware('isLogin');
