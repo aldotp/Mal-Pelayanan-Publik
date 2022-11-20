@@ -4,7 +4,7 @@
 @section('title', 'Admin')
 
 @section('konten')
-<h1>Halaman Admin</h1>
+<h1>Halaman Dashboard Admin</h1>
 <div class="d-flex flex-row border">
     <div class="d-flex flex-column border rounded p-2">
         <h4>Input Data</h4>

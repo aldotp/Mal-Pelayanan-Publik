@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     function index(){
         // menampilkan form memasukan email dan password
@@ -32,14 +36,13 @@ class SessionController extends Controller
             'password'=>$request->password
         ];
 
-        if(Auth::attempt($infologin)){
-            // kalau authentikasi sukses
-            return redirect('admin')->with('Success', 'Berhasil Login');
-            // return view("admin", [
-            //     'name' => $request->name
-            // ]);
+        if(Auth::attempt($infologin) && auth()->user()->is_admin == 1 ){
+            return redirect('admin')->with('Success', 'Berhasil Login sebagai Admin');
+
+        } else if ( Auth::attempt($infologin) && auth()->user()->is_admin == 0){
+            return redirect('home')->with('Success', 'Berhasil Login sebagai User');
+
         } else {
-            // kalau authentikasi gagal
             return redirect('login')->withErrors('Username atau Password yang dimasukan salah');
         }
     }
@@ -79,21 +82,8 @@ class SessionController extends Controller
         ];
 
         User::create($data);
+        return redirect('login')->with('Success', 'Berhasil Register');
 
-        $infologin= [
-            'email'=>$request->email,
-            'password'=>$request->password
-        ];
 
-        if(Auth::attempt($infologin)){
-            // kalau authentikasi sukses
-            return redirect('admin')->with('Success', 'Berhasil Register dan Login',Auth::user()->name);
-            // return view("admin", [
-            //     'name' => $request->name
-            // ]);
-        } else {
-            // kalau authentikasi gagal
-            return redirect('login')->withErrors('Username atau Password yang dimasukan salah');
-        }
     }
 }

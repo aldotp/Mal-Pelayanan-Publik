@@ -19,12 +19,14 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name'=>'admin',
             'email'=>'admin@gmail.com',
-            'password'=>Hash::make('admin123')
+            'is_admin'=>'1',
+            'password'=>Hash::make('admin1234')
         ]);
         DB::table('users')->insert([
-            'name'=>'admin2',
-            'email'=>'admin2@gmail.com',
-            'password'=>Hash::make('admin1234')
+            'name'=>'user',
+            'email'=>'user1@gmail.com',
+            'is_admin'=>'0',
+            'password'=>Hash::make('user1234')
         ]);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProfileUserSeeder extends Seeder
+class LayananSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +15,13 @@ class ProfileUserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('profil_user')->insert([
-            'nama' => 'admin',
-            'alamat' => 'Surakarta',
-            'no_telp' => '081213123',
-            'id_user' => '1',
-            'created_at'=> date('Y-m-d H:i:s')
+        DB::table('layanan')->insert([
+            'nama_layanan' => 'Peminjaman Uang',
+            'id_opd' => '1'
+        ]);
+        DB::table('layanan')->insert([
+            'nama_layanan' => 'Kesehatan',
+            'id_opd' => '2'
         ]);
     }
 }
