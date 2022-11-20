@@ -74,7 +74,7 @@ class PengajuanController extends Controller
      */
     public function edit($id)
     {
-        $Layanan = Layanan::all();
+        $layanan = Layanan::all();
         $data = Pengajuan::where("id", $id)->first();
         return view('input.pengajuan.edit', compact('layanan'))->with('data', $data);
     }
