@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OpdController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\WilayahController;
@@ -40,12 +41,12 @@ Route::get('/sesi/logout', [SessionController::class, 'logout'] );
 
 Route::get('/admin', [AdminController::class, 'admin'] )->middleware('isLogin');
 
-Route::get('/user', [AdminController::class, 'user'] )->middleware('isLogin');
 
 // crud
 Route::resource('wilayah', WilayahController::class)->middleware('isLogin');
 Route::resource('opd', OpdController::class)->middleware('isLogin');
 Route::resource('layanan', LayananController::class)->middleware('isLogin');
+Route::resource('pengajuan', PengajuanController::class)->middleware(('isLogin'));
 
 
 

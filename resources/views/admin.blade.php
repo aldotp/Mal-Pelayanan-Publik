@@ -12,6 +12,7 @@
             <li><a href="/wilayah">Wilayah</a></li>
             <li><a href="/opd">Organisasi Perangkat Daerah</a></li>
             <li><a href="/layanan">Layanan</a></li>
+            <li><a href="/pengajuan">Pengajuan</a></li>
         </ul>
     </div>
 
