@@ -26,7 +26,7 @@
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="/layanan" class="btn btn-secondary">Kembali</a>
+            <a href="/pengajuan" class="btn btn-secondary">Kembali</a>
         </div>
     </form>
 @endsection
