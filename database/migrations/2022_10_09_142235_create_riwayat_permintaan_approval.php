@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('riwayat_permintaan_approval', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_user_opd');
-            $table->timestamps();
+            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('id_user_opd')->nullable();
+            $table->dateTime('approved_at')->nullable();
         });
 
         Schema::table('riwayat_permintaan_approval', function($table) {
