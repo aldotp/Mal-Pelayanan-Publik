@@ -13,16 +13,26 @@ return new class extends Migration
      */
     public function up()
     {
+
+        Schema::create('syarat_layanan', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('nama');
+        });
+
         Schema::create('layanan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_layanan');
+            // $table->unsignedBigInteger('syarat_layanan');
             $table->unsignedBigInteger('id_opd')->nullable();
             $table->timestamps();
         });
 
         Schema::table('layanan', function($table) {
             $table->foreign('id_opd')->references('id')->on('opd')->onDelete('set null');
+            // $table->foreign('syarat_layanan')->references('id')->on('syarat_layanan');
         });
+
+
     }
 
     /**
@@ -32,6 +42,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('syarat_layanan');
         Schema::dropIfExists('layanan');
     }
 };

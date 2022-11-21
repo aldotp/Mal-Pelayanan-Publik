@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('homepage');
 });
+Route::get('/pelayanan', function () {
+    return view('pelayanan');
+});
 // Route::get('/sesi', function () {
 //     return view('sesi/index');
 // });

@@ -42,4 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function data()
+    {
+    // Setiap user akan memiliki banyak data
+    return $this->hasMany('App\Data','id');
+    }
+
 }

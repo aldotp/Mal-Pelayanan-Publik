@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Pengajuan;
 use App\Models\Layanan;
 use App\Models\Opd;
+use App\Models\RiwayatPermintaanUpload;
+use App\Models\SyaratLayanan;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class PengajuanController extends Controller
 {
@@ -17,9 +23,17 @@ class PengajuanController extends Controller
      */
     public function index()
     {
+        $data = DB::table('riwayat_permintaan_layanan')
+                    ->join('layanan', "layanan.id", "=", "riwayat_permintaan_layanan.id_layanan")
+                    ->where('riwayat_permintaan_layanan.id_user', "=", Auth::user()->id)
+                    ->select('riwayat_permintaan_layanan.*', "layanan.nama_layanan")
+                    ->get(); //["id","perihal","id_layanan", "upload", "status"]
 
-        $data = Pengajuan::orderBy('id', 'asc')->paginate(5);
-        return view('input.pengajuan.index')->with('data', $data);
+
+        // dd($data);
+
+        return view('input.pengajuan.index', ['data'=> $data]);
+        // return view('input.pengajuan.index')->with('data', $data);
     }
 
     /**
@@ -30,8 +44,9 @@ class PengajuanController extends Controller
     public function create()
     {
 
+        $syarat_layanan = SyaratLayanan::all();
         $layanan = Layanan::all();
-        return view('input.pengajuan.create', compact('layanan'));
+        return view('input.pengajuan.create', compact('layanan', 'syarat_layanan'));
     }
 
     /**
@@ -45,13 +60,36 @@ class PengajuanController extends Controller
         // Session::flash('perihal', $request->kode);
         $request->validate([
             'perihal'=>'required',
+            'upload' => 'required'
         ]);
-        $data = [
-            'perihal'=>$request->input('perihal'),
-            'deskripsi'=>$request->input('deskripsi'),
-            'id_layanan'=>$request->input('id_layanan'),
+
+
+        $id_user = Auth::id();
+        $file = $request->file('upload');
+        if ($file){
+            $file_ekstensi = $file->extension();
+            $file_nama = date('ymdhis') . "." . $file_ekstensi;
+            $file->move(public_path('files'), $file_nama);
+
+            $data = [
+                'perihal'=>$request->input('perihal'),
+                'deskripsi'=>$request->input('deskripsi'),
+                'id_layanan'=>$request->input('id_layanan'),
+                'id_syarat_layanan'=>$request->input('id_syarat_layanan'),
+                'upload'=> $file_nama,
+                'id_user'=>$id_user
+                // 'status'=>$request->input('status'),
+            ];
+
+
+        }
+
+        $riwayat = [
+            'id_syarat_layanan'=>$request->input('id_syarat_layanan'),
         ];
+
         Pengajuan::create($data);
+        RiwayatPermintaanUpload::create($riwayat);
         return redirect('pengajuan')->with('Success', 'Berhasil Input Data');
     }
 
@@ -109,7 +147,11 @@ class PengajuanController extends Controller
      */
     public function destroy($id)
     {
+        $data = $file_nama;
+
+        RiwayatPermintaanUpload::where('id_permintaan_layanan',$id)->delete();
         Pengajuan::where('id', $id)->delete();
+        File::delete(public_path('foto') . '/' . $data-> upload );
         return redirect('pengajuan')->with('Success', 'Berhasil Delete Data');
     }
 }

@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body class="bg-light">
+<body >
     @include('komponen/navbar')
     <div class="container py-5">
         @include('komponen/pesan')
