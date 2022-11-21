@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class isLogin
+class isUser
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,10 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
+        if(Auth::check() && auth()->user()->is_admin == 0){
             return $next($request);
+        } else {
+            return redirect("home")->withErrors("You don't have user access.");
         }
-        return redirect("login")->withErrors("Silahkan login terlebih dahulu");
     }
 }

@@ -16,12 +16,12 @@ class LayananSeeder extends Seeder
     public function run()
     {
         DB::table('layanan')->insert([
-            'nama_layanan' => 'Peminjaman Uang',
+            'nama_layanan' => 'Pendidikan',
             'id_opd' => '1'
         ]);
         DB::table('layanan')->insert([
             'nama_layanan' => 'Kesehatan',
-            'id_opd' => '2'
+            'id_opd' => '1'
         ]);
     }
 }

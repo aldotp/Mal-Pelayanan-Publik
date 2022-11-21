@@ -3,6 +3,7 @@
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OpdController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\HomeController;
@@ -28,25 +29,22 @@ Route::get('/', function () {
 // });
 
 
-// login
+// Session
 Route::get('/login', [SessionController::class, 'index'] );
 Route::post('/sesi/login', [SessionController::class, 'login'] );
-// register
 Route::get('/register', [SessionController::class, 'register'] );
 Route::post('/sesi/register', [SessionController::class, 'createAccount'] );
-// logout
 Route::get('/sesi/logout', [SessionController::class, 'logout'] );
 
 // user
-Route::get('/home', [HomeController::class, 'index'] )->middleware('isLogin');
+Route::get('/home', [HomeController::class, 'index'] )->middleware('isUser');
+Route::resource('pengajuan', PengajuanController::class)->middleware(('isUser'));
+
+
 
 
 // admin
 Route::get('/admin', [HomeController::class, 'admin'] )->middleware('isAdmin');
-
-
-
-// crud
 Route::resource('wilayah', WilayahController::class)->middleware('isAdmin');
 Route::resource('opd', OpdController::class)->middleware('isAdmin');
 Route::resource('layanan', LayananController::class)->middleware('isAdmin');

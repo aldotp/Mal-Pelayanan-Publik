@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,6 +19,7 @@ class HomeController extends Controller
 
     public function admin()
     {
-        return view('admin.admin');
+        $data = Pengajuan::orderBy('id', 'asc')->paginate(5);
+        return view('admin.admin')->with('data', $data);
     }
 }
