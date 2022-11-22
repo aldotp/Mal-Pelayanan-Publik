@@ -13,14 +13,14 @@
                 <th>No</th>
                 <th>Perihal</th>
                 <th>Deskripsi</th>
-                <th>Id Layanan</th>
+                <th>Nama Layanan</th>
                 <th>File</th>
                 <th>Status</th>
-                <th>Aksi</th>
+                <th class="text-center">Aksi</th>
             </tr>
             @foreach ($data as $item)
             <tr>
-                <td>{{$item->id}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$item->perihal}}</td>
                 <td>{{$item->deskripsi}}</td>
                 <td>{{$item->nama_layanan}}</td>
@@ -30,21 +30,29 @@
                     @endif
                 </td>
                 @if ($item->status == 0)
-                    <td>Pending</td>
+                    <td class="text-primary"><b>Pending</b></td>
                 @elseif($item->status == 1)
-                    <td>Approve</td>
+                    <td style="color: green;"><b>Approve</b></td>
                 @else
-                    <td>Gagal</td>
+                    <td class="text-danger"><b>Gagal</b></td>
                 @endif
                 {{-- <td>{{$item->status}}</td> --}}
                 <td>
-                    <a class="btn btn-secondary btn-sm" href="{{ url('/pengajuan/'.$item->id) }}">Detail</a>
-                    <a class="btn btn-warning btn-sm" href="{{ url('/pengajuan/'.$item->id. '/edit') }}">Edit</a>
-                    <form action="{{ '/pengajuan/'.$item->id}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                    </form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a class="btn btn-secondary btn-sm" href="{{ url('/pengajuan/'.$item->id) }}">Detail</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn btn-warning btn-sm" href="{{ url('/pengajuan/'.$item->id. '/edit') }}">Edit</a>
+                        </div>
+                        <div class="col-md-4">
+                            <form action="{{ '/pengajuan/'.$item->id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
                 </td>
             </tr>
             @endforeach

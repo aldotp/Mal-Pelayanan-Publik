@@ -24,7 +24,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>perihal</th>
+                    <th>Perihal</th>
                     <th>Deskripsi</th>
                     <th>Nama Layanan</th>
                     <th>File</th>
@@ -32,7 +32,7 @@
                 </tr>
                 @foreach ($data as $item)
                 <tr>
-                    <td>{{$item->id}}</td>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$item->perihal}}</td>
                     <td>{{$item->deskripsi}}</td>
                     <td>{{$item->nama_layanan}}</td>
