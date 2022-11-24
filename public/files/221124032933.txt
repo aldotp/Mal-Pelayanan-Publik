@@ -1,0 +1,19 @@
+nampilin data covid
+nampilin data macet
+
+pikobar 
+clustering
+
+sistem informasi
+
+dibidang mereka ngapain
+data apas saja yang dia pakai
+
+manggil api
+terus ngambil data set
+kerjasama sama pihak 3 untuk mengambil dataset
+
+masih binggung menentukan tema
+
+tema 1 transportasi
+tema 2 health system di pancemic

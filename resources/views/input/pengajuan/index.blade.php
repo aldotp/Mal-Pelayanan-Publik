@@ -14,6 +14,7 @@
                 <th>Perihal</th>
                 <th>Deskripsi</th>
                 <th>Nama Layanan</th>
+                <th>Syarat Layanan</th>
                 <th>File</th>
                 <th>Status</th>
                 <th class="text-center">Aksi</th>
@@ -24,6 +25,7 @@
                 <td>{{$item->perihal}}</td>
                 <td>{{$item->deskripsi}}</td>
                 <td>{{$item->nama_layanan}}</td>
+                <td>{{$item->nama}}</td>
                 <td>
                     @if ($item->upload)
                         <a href="{{ url('files').'/'.$item->upload}}">Bukti</a>
@@ -39,13 +41,13 @@
                 {{-- <td>{{$item->status}}</td> --}}
                 <td>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div>
                             <a class="btn btn-secondary btn-sm" href="{{ url('/pengajuan/'.$item->id) }}">Detail</a>
                         </div>
-                        <div class="col-md-4">
+                        <div>
                             <a class="btn btn-warning btn-sm" href="{{ url('/pengajuan/'.$item->id. '/edit') }}">Edit</a>
                         </div>
-                        <div class="col-md-4">
+                        <div>
                             <form action="{{ '/pengajuan/'.$item->id}}" method="post">
                                 @csrf
                                 @method('DELETE')
@@ -58,12 +60,6 @@
             @endforeach
         </thead>
     </table>
-    <h2>Notes</h2>
-    <ul>
-        <li>Status 0 = Pending</li>
-        <li>Status 1 = Approve</li>
-        <li>Status 2 = Deleted</li>
-    </ul>
 
     {{-- {{ $data->links() }} --}}
 @endsection
