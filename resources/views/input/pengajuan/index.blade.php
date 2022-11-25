@@ -6,7 +6,7 @@
 @section('konten')
 <h1>Pengajuan</h1>
 <a href="/pengajuan/create" class="btn btn-primary">Tambah Data Pengajuan</a>
-<a href="/home" class="btn btn-secondary">Kembali</a>
+<a href="/user" class="btn btn-secondary">Kembali</a>
     <table class="table">
         <thead>
             <tr>
@@ -17,7 +17,7 @@
                 <th>Syarat Layanan</th>
                 <th>File</th>
                 <th>Status</th>
-                <th class="text-center">Aksi</th>
+                <th>Aksi</th>
             </tr>
             @foreach ($data as $item)
             <tr>
@@ -40,7 +40,7 @@
                 @endif
                 {{-- <td>{{$item->status}}</td> --}}
                 <td>
-                    <div class="row">
+                    <div class="d-flex flex-row">
                         <div>
                             <a class="btn btn-secondary btn-sm" href="{{ url('/pengajuan/'.$item->id) }}">Detail</a>
                         </div>
@@ -48,12 +48,15 @@
                             <a class="btn btn-warning btn-sm" href="{{ url('/pengajuan/'.$item->id. '/edit') }}">Edit</a>
                         </div>
                         <div>
+
                             <form action="{{ '/pengajuan/'.$item->id}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                             </form>
                         </div>
+                    </div>
+
                     </div>
                 </td>
             </tr>

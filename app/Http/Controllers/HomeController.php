@@ -16,8 +16,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        $user = Auth::user()->id;
-        return view('user.home', compact('user'));
+        $user = DB::table('users')
+                    ->join('profil_user', "profil_user.id_user", "=", "users.id")
+                    ->where('users.id', "=", Auth::user()->id)
+                    ->select('users.*', "profil_user.*")
+                    ->get();
+        // $user = Auth::user()->id;
+        return view('user.home')->with('user', $user);
     }
 
     public function admin()

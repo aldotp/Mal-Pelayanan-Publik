@@ -29,7 +29,8 @@ class AdminController extends Controller
         $data = DB::table('riwayat_permintaan_layanan')
         ->join('layanan', "layanan.id", "=", "riwayat_permintaan_layanan.id_layanan")
         ->join('syarat_layanan', "syarat_layanan.id", "=", "riwayat_permintaan_layanan.id_syarat_layanan")
-        ->select('riwayat_permintaan_layanan.*', "layanan.nama_layanan", "syarat_layanan.nama")
+        ->join('users', "users.id", "=", "riwayat_permintaan_layanan.id_user")
+        ->select('riwayat_permintaan_layanan.*', "layanan.nama_layanan", "syarat_layanan.nama", "users.name")
         ->get();
 
         // $data = Pengajuan::orderBy('id', 'asc')->paginate(5);

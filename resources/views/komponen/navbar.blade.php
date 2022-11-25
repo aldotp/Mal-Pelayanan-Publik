@@ -62,7 +62,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a style="color:black;" class="nav-link" href="/profile">Profile</a>
+                                <a style="color:black;" class="nav-link" href="/user/profil">Profil</a>
                             </li>
                             <li class="nav-item">
                                 <a style="color:black;" class="nav-link" href="/sesi/logout">Logout</a>
