@@ -16,10 +16,17 @@ class ProfileUserSeeder extends Seeder
     public function run()
     {
         DB::table('profil_user')->insert([
-            'nama' => 'admin',
+            'name' => 'admin',
             'alamat' => 'Surakarta',
             'no_telp' => '081213123',
             'id_user' => '1',
+            'created_at'=> date('Y-m-d H:i:s')
+        ]);
+        DB::table('profil_user')->insert([
+            'name' => 'user1',
+            'alamat' => 'Bandung',
+            'no_telp' => '08121312332',
+            'id_user' => '2',
             'created_at'=> date('Y-m-d H:i:s')
         ]);
     }

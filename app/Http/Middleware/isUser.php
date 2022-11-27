@@ -20,7 +20,7 @@ class isUser
         if(Auth::check() && auth()->user()->is_admin == 0){
             return $next($request);
         } else {
-            return redirect("home")->withErrors("You don't have user access.");
+            return redirect("/")->withErrors("You don't have user access.");
         }
     }
 }

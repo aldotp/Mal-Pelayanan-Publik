@@ -5,7 +5,7 @@
 @section('konten')
 
     <div class="container bg-white">
-        <h1 class="text-center -bottom p-5">Mal Pelayanan Public</h1>
+        <h1 class="text-center -bottom p-5">Mal Pelayanan Publik</h1>
         <hr>
 
         <h4 class="text-capitalize">Latar Belakang Mal Pelayanan Publik</h4>

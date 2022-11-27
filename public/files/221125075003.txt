@@ -1,0 +1,25 @@
+Pukul enam
+automisasi text baca di summarize 
+responsibility for CC
+- GCP credit for deployment
+- handling linux, deployment environment
+- ideas what we need in CC 
+- web design, CC -flexible
+- explorasi
+
+
+Talentlytica
+2017 bootstraping
+focus agile 
+fokus orang orang buka sekedar cari duit
+membuat karya yang berguna untuk orang lain
+
+menggunakan data supaya 
+cloud run 
+cloud functions
+cluster data secara manual di download 
+proses data masih edit manual belum di deploy secara otomatis setelah edit
+
+100 pertanyaan dari 2 jam 
+kasih 1000 orang kasih rata-rata bisa beresin berapa soal
+

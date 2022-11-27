@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\InputController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\SessionController;
-use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\WilayahController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,19 +41,33 @@ Route::post('/sesi/register', [SessionController::class, 'createAccount'] );
 Route::get('/sesi/logout', [SessionController::class, 'logout'] );
 
 // user
-Route::get('/home', [HomeController::class, 'index'] )->middleware('isUser');
 Route::resource('pengajuan', PengajuanController::class)->middleware(('isUser'));
 
 
-
+Route::get('/user', [HomeController::class, 'index'] )->middleware('isUser');
+Route::get('/user/profil', [ ProfilController::class, 'index'] )->name('profil.user')->middleware('isUser');;
+Route::put('/user/profil/{id}', [ProfilController::class, 'update'])->name('profil.update');
+// Route::prefix('/user')-> group(function (){
+// })->middleware('isUser');
 
 // admin
-Route::get('/admin', [HomeController::class, 'admin'] )->middleware('isAdmin');
+// Route::get('/admin', [HomeController::class, 'admin'] )->middleware('isAdmin');
+
+Route::resource('admin', AdminController::class)->middleware('isAdmin');
+Route::put('approve', [AdminController::class, 'approve'])->middleware('isAdmin');
+
 Route::resource('wilayah', WilayahController::class)->middleware('isAdmin');
 Route::resource('opd', OpdController::class)->middleware('isAdmin');
 Route::resource('layanan', LayananController::class)->middleware('isAdmin');
+// Route::resource('admindelete', adminController::class, )->middleware('isAdmin');
+// Route::delete('pengajuandelete', AdminController::class, )->middleware('isAdmin');
 
 
+// Auth::routes(['verify'=> true]);
 
 // coba-coba (Training)
-Route::resource('siswa', SiswaController::class)->middleware('isAdmin');
+// Route::resource('siswa', SiswaController::class)->middleware('isAdmin');
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

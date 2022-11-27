@@ -4,6 +4,7 @@
 @section('title', 'Edit Pengajuan')
 
 @section('konten')
+@foreach ($datas as $data)
 <h1>Edit </h1>
     <form method="post" action="{{'/pengajuan/'.$data->id }}">
         @csrf
@@ -25,8 +26,21 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="id_syarat_layanan">Syarat Layanan</label>
+            <select class="form-control" name="id_syarat_layanan" id="id_syarat_layanan">
+                @foreach ($syarat_layanan as $value)
+                <option value="{{$data->id|$value->id}}">{{ $value->nama }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="upload" class="form-label">Upload File</label>
+            <input type="file" class="form-control" name="upload" id="upload">
+        </div>
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="/pengajuan" class="btn btn-secondary">Kembali</a>
         </div>
     </form>
-@endsection
+    @endforeach
+    @endsection

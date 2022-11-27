@@ -24,30 +24,48 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Nama Pengaju</th>
                     <th>Perihal</th>
                     <th>Deskripsi</th>
                     <th>Nama Layanan</th>
+                    <th>Syarat Layanan</th>
+                    <th>Status</th>
                     <th>File</th>
                     <th>Aksi</th>
                 </tr>
                 @foreach ($data as $item)
                 <tr>
                     <td>{{$loop->iteration}}</td>
+                    <td>{{$item->name}}</td>
                     <td>{{$item->perihal}}</td>
                     <td>{{$item->deskripsi}}</td>
                     <td>{{$item->nama_layanan}}</td>
+                    <td>{{$item->nama}}</td>
+                    @if ($item->status == 0)
+                    <td class="text-primary"><b>Pending</b></td>
+                    @elseif($item->status == 1)
+                        <td style="color: green;"><b>Approve</b></td>
+                    @else
+                        <td class="text-danger"><b>Gagal</b></td>
+                    @endif
+
                     <td>
                         @if ($item->upload)
                             <a href="{{ url('files').'/'.$item->upload}}">Bukti</a>
                         @endif
                     </td>
                     <td>
-                        <form action="{{ URL('pengajuan/', $item->id)}}">
+
+
+                        <form method="post" action="{{ URL('/admin/'.$item->id)}}">
                             @csrf
                             @method('PUT')
-                            <button class="btn btn-secondary btn-sm bg-primary" href="{{ url('/pengajuan/'.$item->id) }}">Approve</button>
+                            <button class="btn btn-secondary btn-sm bg-primary">Approve</button>
                         </form>
-                        <form action="{{ '/pengajuan/'.$item->id}}" method="post">
+
+
+
+                        <form action="{{ '/admin/'.$item->id}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" type="submit">Delete</button>
