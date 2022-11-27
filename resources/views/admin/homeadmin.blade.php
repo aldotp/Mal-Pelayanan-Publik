@@ -62,10 +62,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Layanan
                         </a>
-                        <a class="nav-link collapsed" href="/pengajuan">
+                        <!-- <a class="nav-link collapsed" href="/pengajuan">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Pengajuan
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </nav>
@@ -75,39 +75,66 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Halaman Admin</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="/admin">Riwayat</a></li>
-                        <li class="breadcrumb-item"><a href="/wilayah">Wilayah</a></li>
-                        <li class="breadcrumb-item active">Ubah Wilayah</li>
+                        <li class="breadcrumb-item active">Riwayat</li>
                     </ol>
                     <div class="container mt-3">
-                        <form method="post" action="{{'/wilayah/'.$data->id }}">
-                            @csrf
-                            @method('PUT')
-                            <div class="mb-3">
-                                <label for="kode">Kode</label>
-                                <input type="text" class="form-control" id="kode" placeholder="Kode" name="kode" value=" {{ $data->kode }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nama">Nama Wilayah</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="{{ $data->nama }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="level">Level</label>
-                                <input type="text" class="form-control" id="level" placeholder="Level" name="level" value=" {{ $data->level }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="id_parent">Level Parent</label>
-                                <select class="form-control" name="id_parent" id="id_parent">
-                                    @foreach($wilayah as $value)
-                                    <option value="{{$data->id|$value->id}}">{{$value->nama}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                                <a href="/wilayah" class="btn btn-secondary">Kembali</a>
-                            </div>
-                        </form>
+                        <h2 class="mb-4 text-center">Riwayat Permintaan Layanan</h2>
+                        <table class="table" style="text-align:center">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Pengaju</th>
+                                    <th>Perihal</th>
+                                    <th>Deskripsi</th>
+                                    <th>Nama Layanan</th>
+                                    <th>Syarat Layanan</th>
+                                    <th>Status</th>
+                                    <th>File</th>
+                                    <th>Aksi</th>
+                                </tr>
+                                @foreach ($data as $item)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->perihal}}</td>
+                                    <td>{{$item->deskripsi}}</td>
+                                    <td>{{$item->nama_layanan}}</td>
+                                    <td>{{$item->nama}}</td>
+                                    @if ($item->status == 0)
+                                    <td class="text-primary"><b>Pending</b></td>
+                                    @elseif($item->status == 1)
+                                    <td style="color: green;"><b>Approve</b></td>
+                                    @else
+                                    <td class="text-danger"><b>Gagal</b></td>
+                                    @endif
+
+                                    <td>
+                                        @if ($item->upload)
+                                        <a href="{{ url('files').'/'.$item->upload}}">Bukti</a>
+                                        @endif
+                                    </td>
+                                    <td>
+
+
+                                        <form method="post" action="{{ URL('/admin/'.$item->id)}}">
+                                            @csrf
+                                            @method('PUT')
+                                            <button class="btn btn-secondary btn-sm bg-primary">Approve</button>
+                                        </form>
+
+
+
+                                        <form action="{{ '/admin/'.$item->id}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </thead>
+                        </table>
+                        {{-- {{ $data->links() }} --}}
                     </div>
                 </div>
             </main>

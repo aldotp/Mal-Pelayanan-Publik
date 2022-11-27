@@ -34,7 +34,7 @@ class AdminController extends Controller
         ->get();
 
         // $data = Pengajuan::orderBy('id', 'asc')->paginate(5);
-        return view('admin.admin')->with('data', $data);
+        return view('admin.homeadmin')->with('data', $data);
     }
 
     /**
