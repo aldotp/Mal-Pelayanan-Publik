@@ -52,7 +52,7 @@ class SessionController extends Controller
 
     function logout(){
         Auth::logout();
-        return redirect('login')->with('Success', 'Berhasil Logout');
+        return redirect('/')->with('Success', 'Berhasil Logout');
     }
 
     function register(){

@@ -23,10 +23,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('tampilan/index');
+    //return view('homepage');
 });
 Route::get('/pelayanan', function () {
-    return view('pelayanan');
+    return view('tampilan/pelayanan');
+    //return view('pelayanan');
 });
 // Route::get('/sesi', function () {
 //     return view('sesi/index');

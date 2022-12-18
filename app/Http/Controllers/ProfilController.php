@@ -47,7 +47,7 @@ class ProfilController extends Controller
 
         // return redirect()->to("/user/profil")->with('Success', 'Berhasil Update Data');
         // return redirect()->route('profil/user')->with('Success', 'Berhasil Update Data');
-        return redirect('user/profil')->with('Success', 'Berhasil Update Data');
+        return redirect('/')->with('Success', 'Berhasil Update Data');
         // return view('user.profil.index')->with('data', $data);
     }
 }

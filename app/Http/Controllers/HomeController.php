@@ -22,7 +22,8 @@ class HomeController extends Controller
                     ->select('users.*', "profil_user.*")
                     ->get();
         // $user = Auth::user()->id;
-        return view('user.home')->with('user', $user);
+        return view('tampilan.index')->with('user', $user);
+        //return view('user.home')->with('user', $user);
     }
 
     public function admin()
