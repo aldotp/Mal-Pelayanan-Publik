@@ -9,16 +9,16 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <!-- Favicons -->
+
     <link href="{{ asset('assets-user/img/testimonials-bg.jpg') }}" rel="icon">
     <link href="{{ asset('assets-user/img/testimonials-bg.jpg') }}" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
+
     <link href="{{ asset('assets-user/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets-user/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets-user/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -26,20 +26,19 @@
     <link href="{{ asset('assets-user/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets-user/vendor/aos/aos.css') }}" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
+
     <link href="{{ asset('assets-user/css/main.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- ======= Header ======= -->
+
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
             <a href="index.html" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="assets/img/logo.png" alt=""> -->
+
                 <h1>MPP</h1>
             </a>
 
@@ -57,7 +56,7 @@
                         </ul>
                     </li>
                 </ul>
-            </nav><!-- .navbar -->
+            </nav>
 
             @else
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -67,14 +66,13 @@
                     <li><a href="/" class="active">Beranda</a></li>
                     <li><a class="get-a-quote" href="/login">Masuk</a></li>
                 </ul>
-            </nav><!-- .navbar -->
+            </nav>
             @endif
 
         </div>
-    </header><!-- End Header -->
-    <!-- End Header -->
+    </header>
 
-    <!-- ======= Hero Section ======= -->
+
     <section id="hero" class="hero d-flex align-items-center">
         <div class="container">
             <div class="row gy-4 d-flex justify-content-between">
@@ -99,9 +97,7 @@
 
             </div>
         </div>
-    </section><!-- End Hero Section -->
-
-    <!-- ======= Footer ======= -->
+    </section>
     <footer id="footer" class="footer">
 
         <div class="container">
@@ -114,14 +110,13 @@
             </div>
         </div>
 
-    </footer><!-- End Footer -->
-    <!-- End Footer -->
+    </footer>
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <div id="preloader"></div>
 
-    <!-- Vendor JS Files -->
+
     <script src="{{ asset('assets-user/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-user/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('assets-user/vendor/glightbox/js/glightbox.min.js') }}"></script>
@@ -129,7 +124,7 @@
     <script src="{{ asset('assets-user/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets-user/vendor/php-email-form/validate.js') }}"></script>
 
-    <!-- Template Main JS File -->
+
     <script src="{{ asset('assets-user/js/main.js') }}"></script>
 
 </body>
