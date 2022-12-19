@@ -23,9 +23,5 @@ class OPDSeeder extends Seeder
             'nama_pimpinan'=>'Sayoto',
             'id_wilayah'=>1,
         ]);
-        DB::table('user_opd')->insert([
-            'id_user'=>'1',
-            'id_opd'=>'1',
-        ]);
     }
 }
