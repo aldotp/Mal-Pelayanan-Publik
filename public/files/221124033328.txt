@@ -1,0 +1,23 @@
+membuat VPC network
+membuat firewall
+0.0.0.0
+
+open port custom sesuai yang dibutuhkan
+
+membuat instance (sesuai netowork yang sudah dibuat)
+ubuntu 20
+
+sudo apt update
+sudo apt install npm
+
+sudo npm instal -g n 
+sudo n install 
+
+git clone
+
+Stackdriver
+-monitoring
+-logging
+-debug
+-error reporting
+-trace

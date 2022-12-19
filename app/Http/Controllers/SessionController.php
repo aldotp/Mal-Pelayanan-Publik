@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profil;
 use App\Models\User;
+use Carbon\Carbon;
 use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -40,7 +43,7 @@ class SessionController extends Controller
             return redirect('admin')->with('Success', 'Berhasil Login sebagai Admin');
 
         } else if ( Auth::attempt($infologin) && auth()->user()->is_admin == 0){
-            return redirect('home')->with('Success', 'Berhasil Login sebagai User');
+            return redirect('user')->with('Success', 'Berhasil Login sebagai User');
 
         } else {
             return redirect('login')->withErrors('Username atau Password yang dimasukan salah');
@@ -49,7 +52,7 @@ class SessionController extends Controller
 
     function logout(){
         Auth::logout();
-        return redirect('login')->with('Success', 'Berhasil Logout');
+        return redirect('/')->with('Success', 'Berhasil Logout');
     }
 
     function register(){
@@ -74,14 +77,23 @@ class SessionController extends Controller
             'password.required'=>'Password wajib diisi',
             'password.min'=>'Password minimal 6 karakater'
         ]);
+        $name = $request->name;
 
         $data = [
-            'name'=>$request->name,
+            'name'=>$name,
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
+            'created_at'=> Carbon::now()
         ];
 
-        User::create($data);
+        $profil = [
+            'name'=> $name,
+            'id_user'=> DB::table('users')->insertGetId($data)
+        ];
+
+
+        // User::create($data);
+        Profil::create($profil);
         return redirect('login')->with('Success', 'Berhasil Register');
 
 

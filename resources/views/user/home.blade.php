@@ -3,11 +3,14 @@
 @section('title', 'User')
 
 @section('konten')
+@foreach ($user as $data)
 
-    <h1 class="text-center">Pengajuan Izin</h1>
-    <hr>
+<h1 class="text-center">Pengajuan Izin</h1>
+<hr>
     <div>
-        <h2 style="">Selamat Datang "{{ Auth::user()->name }}"</h4>
+        {{-- <h2 style="">Selamat Datang "{{ Auth::user()->name }}"</h4> --}}
+        <h2 style="">Selamat Datang "{{ $data->name }}"</h4>
+        <p style="">alamat "{{ $data->alamat}}"</p>
         <br>
         <h4><a href="/pengajuan">Ajukan Pengajuan</a></h4>
         <br>
@@ -187,4 +190,5 @@
 
     </div>
 
+    @endforeach
 @endsection

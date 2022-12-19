@@ -16,8 +16,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        $user = Auth::user()->id;
-        return view('user.home', compact('user'));
+        $user = DB::table('users')
+                    ->join('profil_user', "profil_user.id_user", "=", "users.id")
+                    ->where('users.id', "=", Auth::user()->id)
+                    ->select('users.*', "profil_user.*")
+                    ->get();
+        // $user = Auth::user()->id;
+        return view('tampilan.index')->with('user', $user);
+        //return view('user.home')->with('user', $user);
     }
 
     public function admin()
@@ -28,6 +34,7 @@ class HomeController extends Controller
                     ->get();
 
         // $data = Pengajuan::orderBy('id', 'asc')->paginate(5);
-        return view('admin.admin')->with('data', $data);
+        // return view('admin.admin')->with('data', $data);
+        return view('admin.homeadmin')->with('data', $data);
     }
 }
