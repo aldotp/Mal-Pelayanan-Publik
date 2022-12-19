@@ -104,13 +104,15 @@
                                     <td value="{{$value->id}}">{{$value->nama}}</td>
                                     @endforeach --}}
                                     <td>
-                                        <a class="btn btn-secondary btn-sm" href="{{ url('/wilayah/'.$item->id) }}">Detail</a>
-                                        <a class="btn btn-warning btn-sm" href="{{ url('/wilayah/'.$item->id. '/edit') }}">Edit</a>
-                                        <form action="{{ '/wilayah/'.$item->id}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                                        </form>
+                                        <div class="d-flex justify-content-center">
+                                            <a class="btn btn-secondary btn-sm" href="{{ url('/wilayah/'.$item->id) }}">Detail</a>
+                                            <a class="btn btn-warning btn-sm" href="{{ url('/wilayah/'.$item->id. '/edit') }}">Edit</a>
+                                            <form action="{{ '/wilayah/'.$item->id}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

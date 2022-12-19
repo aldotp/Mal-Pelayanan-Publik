@@ -110,7 +110,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <div class="d-flex flex-row">
+                                    <div class="d-flex justify-content-center">
                                             <form method="post" action="{{ URL('/admin/'.$item->id)}}">
                                                 @csrf
                                                 @method('PUT')

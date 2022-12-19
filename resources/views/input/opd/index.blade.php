@@ -103,13 +103,15 @@
                                     <td>{{$item->nama_pimpinan}}</td>
                                     <td>{{$item->id_wilayah}}</td>
                                     <td>
-                                        <a class="btn btn-secondary btn-sm" href="{{ url('/opd/'.$item->id) }}">Detail</a>
-                                        <a class="btn btn-warning btn-sm" href="{{ url('/opd/'.$item->id. '/edit') }}">Edit</a>
-                                        <form action="{{ '/opd/'.$item->id}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                                        </form>
+                                        <div class="d-flex justify-content-center">
+                                            <a class="btn btn-secondary btn-sm" href="{{ url('/opd/'.$item->id) }}">Detail</a>
+                                            <a class="btn btn-warning btn-sm" href="{{ url('/opd/'.$item->id. '/edit') }}">Edit</a>
+                                            <form action="{{ '/opd/'.$item->id}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
